@@ -1,35 +1,23 @@
-## 测试单元模板, 实现TEST与段错误检测
+## 测试模板
 
-### 测试在src/test中新建test文件, 例如src/test/demo_test.cc
+```shell
+# test
+	- JUST_RUN_TEST
+	- TEST
+	- SKIP_TEST
 
-```c++
-#include"common/tt_test.h"
-
-// JUST_RUN_TEST(demo, test)
-TEST(demo, test)
-{
-    ASSERT_TRUE(1 == 1);
-    ASSERT_FALSE(1 == 2);
-    ASSERT_EQ(1, 1);
-}
-
-
-SKIP_TEST(demo, test1)
-// TEST(demo, test1)
-{
-    int *p = nullptr;
-    *p = 1;
-}
-
-TEST(demo, test2)
-{
-    ASSERT_EQ(1, 2);
-}
+	- ASSERT_***
+	- EXPECT_***
+# assert
+	- 断言(不过并不会断掉程序)
+# backtrace
+	- 用于查看段错误(已经内置在main函数中)
+# dbg
+	- 用于测试简单的程序
+# log
+	- LOG("HELLO", "WORLD: ", 1) << std::endl;
+	- LOG_FILE(ofs, "HELLO", "WORLD: ", 1) << std::endl;
 ```
-
-### 输出结果
-
-[![p9yVUqx.png](https://s1.ax1x.com/2023/05/12/p9yVUqx.png)](https://imgse.com/i/p9yVUqx)
 
 ### !注意
 
