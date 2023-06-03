@@ -27,7 +27,7 @@ TEST(dbg, test)
     dbg(3 * a);
 
     uint a1 = 2;
-    dbg(3 * a1);
+    dbg(3 * a1 + 4 * a1);
 
     std::vector<int32_t> numbers{1, 2, 3};
     dbg_vector(numbers);
@@ -38,4 +38,7 @@ TEST(dbg, test)
 
     Point p{1.0f, 2.0f};
     dbg(p);
+
+    double d = 1.0;
+    dbg(d);
 }

@@ -2,13 +2,20 @@
 #define __LOG_H__
 
 #include<iostream>
-template <typename T>
-std::ostream &STD_COUT(std::ostream &os, const T &arg) { return os << arg;}
-   
-template <typename T, typename... Types>
-std::ostream &STD_COUT(std::ostream &os, const T &firstArg, const Types &...args){ os << firstArg << " "; return STD_COUT(os, args...);}
 
-#define LOG(...)  STD_COUT(std::cout, __VA_ARGS__)
-#define LOG_FILE(ofs, ...)  STD_COUT(ofs, __VA_ARGS__)
+#define NO_PRINT_DEFINE
+
+template <typename... Args>
+std::ostream & tt_print(std::ostream &os, Args&&... args) {
+    #ifdef NO_PRINT_DEFINE
+    #else
+    auto a = {(os << std::forward<Args>(args), 0)...};
+    (void)a;
+    #endif
+    return os;
+}
+
+#define LOG(...)  tt_print(std::cout, __VA_ARGS__)
+#define LOG_FILE(ofs, ...)  tt_print(ofs, __VA_ARGS__)
 
 #endif // __LOG_H__

@@ -9,6 +9,7 @@
 #define COLOR_BLUE "\033[34m"
 #define COLOR_WHITE "\033[37m"
 #define COLOR_GRAY "\033[90m"
+#define COLOR_END "\033[0m"
 
 class DebugOutput
 {
@@ -22,7 +23,7 @@ public:
 
     template<typename T>
     void print(const T& value){
-        std::cout << prefix_ << value << " (" << COLOR_GREEN << type_name(value) << COLOR_WHITE << ")" << "\033[0m" << std::endl;
+        std::cout << prefix_ << value << " (" << COLOR_GREEN << type_name(value) << COLOR_WHITE << ")" << COLOR_END << std::endl;
     }
 
     template<typename T>
@@ -32,7 +33,7 @@ public:
             if (i > 0) std::cout << ", ";
             std::cout << value[i];
         }
-        std::cout << "} (" << COLOR_GREEN << type_name(value) << COLOR_WHITE << ")" << "\033[0m" << std::endl;
+        std::cout << "} (" << COLOR_GREEN << type_name(value) << COLOR_WHITE << ")" << COLOR_END << std::endl;
     }
 private:
     template <typename T>
