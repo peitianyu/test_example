@@ -5,6 +5,8 @@
 // JUST_RUN_TEST(log, test)
 TEST(log, test)
 {
+    LOG_TEST("=================================log test=============================");
+
     LOG("hello world\n");
 
     std::ofstream ofs("log.txt", std::ios::app);
